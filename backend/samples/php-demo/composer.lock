@@ -1,0 +1,11 @@
+{
+  "_readme": ["Verrou de démonstration avec versions anciennes et vulnérables."],
+  "content-hash": "cybbig-demo",
+  "packages": [
+    {"name": "guzzlehttp/guzzle", "version": "7.0.0", "type": "library"},
+    {"name": "monolog/monolog", "version": "1.0.0", "type": "library"},
+    {"name": "twig/twig", "version": "2.0.0", "type": "library"},
+    {"name": "symfony/http-foundation", "version": "4.0.0", "type": "library"}
+  ],
+  "packages-dev": []
+}

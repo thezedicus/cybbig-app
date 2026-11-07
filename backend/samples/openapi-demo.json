@@ -1,0 +1,84 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API boutique de démonstration Cybbig",
+    "version": "2.0.0",
+    "description": "Contrat fictif étendu pour les exercices d'audit API passif. Toutes les données et opérations sont simulées; aucune commande ni aucun paiement n'est créé."
+  },
+  "servers": [
+    {"url": "http://api.demo.local/v1", "description": "Serveur fictif, non résolu par la boutique locale"}
+  ],
+  "paths": {
+    "/categories": {
+      "get": {
+        "operationId": "listCategories",
+        "summary": "Lister les rayons fictifs",
+        "responses": {"200": {"description": "Catégories de démonstration"}}
+      }
+    },
+    "/products": {
+      "get": {
+        "operationId": "searchProducts",
+        "summary": "Rechercher dans le catalogue de démo",
+        "parameters": [
+          {"name": "q", "in": "query", "schema": {"type": "string", "maxLength": 120}},
+          {"name": "category", "in": "query", "schema": {"type": "string"}},
+          {"name": "page", "in": "query", "schema": {"type": "integer", "minimum": 1}}
+        ],
+        "responses": {"200": {"description": "Résultats fictifs paginés"}}
+      }
+    },
+    "/products/{productId}": {
+      "get": {
+        "operationId": "getDemoProduct",
+        "summary": "Consulter un produit fictif",
+        "parameters": [
+          {"name": "productId", "in": "path", "required": true, "schema": {"type": "string"}}
+        ],
+        "responses": {"200": {"description": "Produit du catalogue"}, "404": {"description": "Produit inconnu"}}
+      }
+    },
+    "/cart": {
+      "get": {
+        "operationId": "readDemoCart",
+        "summary": "Lire le panier simulé",
+        "responses": {"200": {"description": "Panier local fictif"}}
+      },
+      "post": {
+        "operationId": "addDemoCartItem",
+        "summary": "Ajouter un article au panier de démonstration",
+        "requestBody": {"content": {"application/json": {"schema": {"type": "object", "properties": {"productId": {"type": "string"}, "quantity": {"type": "integer", "minimum": 1, "maximum": 5}}}}}},
+        "responses": {"200": {"description": "Ajout simulé, aucune donnée persistée"}}
+      }
+    },
+    "/checkout/simulate": {
+      "post": {
+        "operationId": "simulateCheckout",
+        "summary": "Simuler un checkout sans paiement",
+        "description": "Exercice uniquement : ne jamais transmettre de vraie carte; aucune transaction n'est effectuée.",
+        "requestBody": {"content": {"application/json": {"schema": {"type": "object", "properties": {"demoOrderId": {"type": "string"}}}}}},
+        "responses": {"200": {"description": "Résultat fictif"}}
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "operationId": "getDemoOrder",
+        "summary": "Consulter le suivi d'une commande fictive",
+        "parameters": [
+          {"name": "orderId", "in": "path", "required": true, "schema": {"type": "string"}}
+        ],
+        "responses": {"200": {"description": "Commande de test"}, "404": {"description": "Commande inconnue"}}
+      },
+      "delete": {
+        "operationId": "cancelDemoOrder",
+        "summary": "Simuler l'annulation d'une commande",
+        "responses": {"200": {"description": "Aucune commande réelle n'est modifiée"}}
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {"type": "http", "scheme": "bearer"}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout de démonstration Cybbig</title>
+  <script src="https://cdn.example.net/fake-analytics.js"></script>
+</head>
+<body>
+  <!-- FICHIER DE DÉMONSTRATION : motifs inertes, aucun code n'est exécuté.
+       Les domaines sont fictifs et aucune donnée n'est transmise. -->
+  <h1>Paiement sécurisé</h1>
+  <form action="https://pay.example.org/checkout" method="post">
+    <input name="card_number" autocomplete="cc-number">
+    <input name="card_cvc" autocomplete="cc-csc">
+    <button id="pay">Payer</button>
+  </form>
+
+  <!-- Motif de démonstration : SVG inline avec gestionnaire onload et atob() -->
+  <svg width="1" height="1" aria-hidden="true"><!-- demo-marker: onload="atob('ZGVtby1vbmx5')" --></svg>
+
+  <!-- Motif de démonstration : exécution dynamique (désactivée) -->
+  <template id="demo-dynamic"><!-- new Function(atob('ZGVtby1vbmx5'))() --></template>
+
+  <script>
+    /* Démonstration défensive : ces marqueurs ne sont jamais exécutés.
+       Un vrai skimmer tenterait de lire les champs carte et d'exfiltrer. */
+    window.__cybbigDemoMarkers = {
+      inert: true,
+      websocket: "wss://demo.invalid/ws",
+      storageKey: "_mgx_cv"
+    };
+  </script>
+</body>
+</html>

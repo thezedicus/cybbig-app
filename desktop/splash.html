@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cybbig — Démarrage</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(900px 480px at 20% 0%, rgba(14, 116, 144, .22), transparent 60%),
+          radial-gradient(700px 420px at 100% 100%, rgba(37, 99, 235, .14), transparent 55%),
+          #060e19;
+        color: #e7eef9;
+        font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+      }
+      .card {
+        width: min(520px, calc(100vw - 48px));
+        border: 1px solid #1b3049;
+        border-radius: 18px;
+        background: linear-gradient(180deg, #0d1c2f, #08131f);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+        padding: 34px 36px 30px;
+      }
+      .brand { display: flex; align-items: center; gap: 14px; }
+      /* Logo noir sur transparent, inversé en blanc sur le fond sombre. */
+      .mark { width: 54px; height: 54px; object-fit: contain; filter: invert(1); }
+      h1 { margin: 0; font-size: 22px; letter-spacing: .04em; }
+      .sub { margin-top: 2px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #7f93ae; }
+      .status { display: flex; align-items: center; gap: 10px; margin-top: 28px; color: #b5c4d8; font-size: 13px; }
+      .spinner {
+        width: 17px; height: 17px; border-radius: 50%;
+        border: 2px solid rgba(53, 214, 240, .2); border-top-color: #35d6f0;
+        animation: spin .8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .bar { height: 4px; border-radius: 99px; background: #101f33; overflow: hidden; margin-top: 20px; }
+      .bar i { display: block; width: 40%; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #0ea5c4, #35d6f0); animation: slide 1.4s ease-in-out infinite; }
+      @keyframes slide { 0% { transform: translateX(-110%); } 100% { transform: translateX(320%); } }
+      .note { margin: 22px 0 0; font-size: 11.5px; line-height: 1.6; color: #5c7089; }
+      .badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 4px 9px; border-radius: 999px; border: 1px solid #1b3049; color: #7f93ae; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
+      .dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 7px rgba(52, 211, 153, .8); }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="brand">
+        <img class="mark" src="icon.png" alt="" aria-hidden="true" />
+        <div>
+          <h1>CYBBIG</h1>
+          <div class="sub">Défense locale</div>
+        </div>
+      </div>
+      <div class="status"><span class="spinner"></span> Démarrage du service local sécurisé…</div>
+      <div class="bar"><i></i></div>
+      <span class="badge"><span class="dot"></span> 127.0.0.1 uniquement</span>
+      <p class="note">
+        Les données restent sur ce poste. Les analyses sont passives ou statiques :
+        aucun exploit, aucune exécution du code analysé, aucune télémétrie.
+      </p>
+    </main>
+  </body>
+</html>

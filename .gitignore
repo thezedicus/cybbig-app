@@ -1,0 +1,44 @@
+# Dépendances
+node_modules/
+backend/.venv/
+.venv/
+
+# Builds et installateurs (publiés dans les Releases GitHub, pas dans le dépôt)
+release/
+frontend/dist/
+*.tsbuildinfo
+
+# Données locales : base SQLite (contient les clés API des utilisateurs), rapports, journaux
+backend/data/
+*.db
+*.db-journal
+*.db-wal
+*.sqlite
+*.log
+
+# Secrets — ne jamais commiter
+.env
+.env.*
+!backend/samples/php-demo/.env
+*.key
+*.pem
+*.pfx
+*.p12
+owner_ed25519*
+secrets/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Outils locaux et IDE
+.claude/
+.mcp.json
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# Scripts personnels
+make_galaxy_logo.py

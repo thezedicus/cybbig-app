@@ -1,0 +1,30 @@
+# Installateur classique (Setup.exe NSIS). Construit par scripts\build-installer.ps1 -SetupExe
+# à partir de la copie autonome release\stage\app (backend + Python embarqué + interface).
+appId: Cybbig.Desktop
+productName: Cybbig
+electronVersion: 45.2.1
+directories:
+  app: release/stage/app
+  output: release/setup
+asar: false
+npmRebuild: false
+files:
+  - "**/*"
+win:
+  target: nsis
+  icon: desktop/icon.ico
+  executableName: Cybbig
+  # Pas de signature ni d'édition de l'exe (rcedit) : Cybbig.exe reste identique à electron.exe
+  # (réputation Smart App Control conservée) et l'outil winCodeSign, qui exige le mode développeur, n'est pas requis.
+  signAndEditExecutable: false
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Cybbig
+  installerIcon: desktop/icon.ico
+  uninstallerIcon: desktop/icon.ico
+  artifactName: Cybbig-Setup-${version}.exe
+  deleteAppDataOnUninstall: false
